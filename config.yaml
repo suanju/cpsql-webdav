@@ -1,18 +1,17 @@
 server:
-  backup_folder: "测试文件夹"
-  server_name: "服务器1"
-  project_name: "项目1"
-  backup_interval: 10
-  max_backup_data: 3
-
+    backup_folder: 数据库备份
+    server_name:
+    project_name:
+    backup_interval: 10
+    max_backup_data: 3
+    save_local: true
 webdav:
-  webdav_address: "http://60.174.144.61:44556"
-  username: "wangmoxiang"
-  password: "594Wmx1991"
-
+    webdav_address: http://60.174.144.61:44556
+    username:
+    password:
 database:
-  host: "127.0.0.1"
-  port : 3306
-  database_name: "test"
-  username: "root"
-  password: "123456"
+    host: 127.0.0.1
+    port: 3306
+    database_name:
+    username:
+    password:

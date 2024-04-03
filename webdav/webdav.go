@@ -2,7 +2,6 @@ package webdav
 
 import (
 	config2 "cpsql-webdav/config"
-	"fmt"
 	"github.com/studio-b12/gowebdav"
 	"go.uber.org/zap"
 	"log"
@@ -13,7 +12,7 @@ import (
 
 var Client *gowebdav.Client
 
-func init() {
+func CreateClient() {
 	config := config2.Config.WebDAV
 	// 创建WebDAV客户端
 	Client = gowebdav.NewClient(config.WebdavAddress, config.Username, config.Password)
@@ -56,20 +55,17 @@ func UploadFileToWebDAV(client *gowebdav.Client, localFilePath string, remoteFil
 }
 
 func CheckUploadMaxBackup(client *gowebdav.Client, path string, max int) error {
-	fmt.Println(max)
 	files, err := client.ReadDir(path)
 	if err != nil {
 		zap.S().Errorf("无法读取目录 %v", err)
 		return err
 	}
-	fmt.Println(len(files))
 	if len(files) >= max {
 		//排序
 		sort.Slice(files, func(i, j int) bool {
 			return files[i].ModTime().Before(files[j].ModTime())
 		})
 		filePath := filepath.ToSlash(filepath.Join(path, files[0].Name()))
-		fmt.Println(filePath)
 		err := client.Remove(filePath)
 		if err != nil {
 			zap.S().Errorf("无法删除文件 %v", err)

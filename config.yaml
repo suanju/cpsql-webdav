@@ -1,0 +1,18 @@
+server:
+  backup_folder: "测试文件夹"
+  server_name: "服务器1"
+  project_name: "项目1"
+  backup_interval: 10
+  max_backup_data: 3
+
+webdav:
+  webdav_address: "http://60.174.144.61:44556"
+  username: "wangmoxiang"
+  password: "594Wmx1991"
+
+database:
+  host: "127.0.0.1"
+  port : 3306
+  database_name: "test"
+  username: "root"
+  password: "123456"
